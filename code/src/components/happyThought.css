@@ -1,0 +1,17 @@
+.happy-thought {
+  border: 2px solid black;
+  box-shadow: 4px 4px black;
+  width: 300px;
+  height: 130px;
+  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.happy-thought h3 {
+  font-family: "Courier", monospace;
+  font-size: 16px;
+  margin: 0;
+}
