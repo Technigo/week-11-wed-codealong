@@ -14,21 +14,28 @@ export const App = () => {
       .then(json => setThoughts(json))
   }, [postedMessage])
 
-  const handleFormSubmit = message => {
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify({ message }),
-      headers: { "Content-Type": "application/json" }
+  const onFormSubmit = message => {
+    setPostedMessage(message)
+  }
+
+  const onLiked = thoughtId => {
+    console.log("Logging in the APP.js", thoughtId)
+    // just to check that the func is being called and has the id
+
+    const updatedThoughts = thoughts.map(thought => {
+      if (thought._id === thoughtId) {
+        thought.hearts += 1
+      }
+      return thought
     })
-      .then(() => setPostedMessage(message))
-      .catch(err => console.log("error:", err))
+    setThoughts(updatedThoughts)
   }
 
   return (
     <main>
-      <HappyForm onFormSubmit={handleFormSubmit} />
+      <HappyForm onFormSubmit={onFormSubmit} />
       {thoughts.map(thought => (
-        <HappyThought key={thought._id} thought={thought} />
+        <HappyThought key={thought._id} thought={thought} onLiked={onLiked} />
       ))}
     </main>
   )
