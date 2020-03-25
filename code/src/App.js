@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react"
-import { HappyThought } from "./components/HappyThought"
-import { HappyForm } from "./components/HappyForm"
+import React, { useEffect, useState } from 'react'
+import { HappyThought } from './components/HappyThought'
+import { HappyForm } from './components/HappyForm'
 
-const url = "https://technigo-thoughts.herokuapp.com/"
+const url = 'https://technigo-thoughts.herokuapp.com/'
 
 export const App = () => {
   const [thoughts, setThoughts] = useState([])
-  const [postedMessage, setPostedMessage] = useState("")
+  const [postedMessage, setPostedMessage] = useState('')
 
   useEffect(() => {
     fetch(url)
@@ -19,7 +19,7 @@ export const App = () => {
   }
 
   const onLiked = thoughtId => {
-    console.log("Logging in the APP.js", thoughtId)
+    console.log('Logging in the APP.js', thoughtId)
     // just to check that the func is being called and has the id
 
     const updatedThoughts = thoughts.map(thought => {

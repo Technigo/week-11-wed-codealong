@@ -1,23 +1,23 @@
-import React, { useState } from "react"
-import "./happyForm.css"
+import React, { useState } from 'react'
+import './happyForm.css'
 
-const url = "https://technigo-thoughts.herokuapp.com/"
+const url = 'https://technigo-thoughts.herokuapp.com/'
 
 export const HappyForm = props => {
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState('')
 
   const handleSubmit = event => {
     event.preventDefault()
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({ message }),
-      headers: { "Content-Type": "application/json" }
+      headers: { 'Content-Type': 'application/json' }
     })
       .then(() => {
-        setMessage("")
+        setMessage('')
         props.onFormSubmit(message)
       })
-      .catch(err => console.log("error:", err))
+      .catch(err => console.log('error:', err))
   }
 
   return (
@@ -32,7 +32,7 @@ export const HappyForm = props => {
         <button
           type='submit'
           onClick={handleSubmit}
-          disabled={message.length < 6 || message.length > 140 ? true : false}
+          disabled={message.length < 5 || message.length > 140} // this will be interpreted as true or false
         >
           Send a happy thought
         </button>
